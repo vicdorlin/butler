@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">智能管家</string>
+    <string name="tab_1">服务管家</string>
+    <string name="tab_2">微信精选</string>
+    <string name="tab_3">美女中心</string>
+    <string name="tab_4">个人中心</string>
+    <string name="text_setting">设置</string>
+</resources>
+
