@@ -1,3 +1,4 @@
 <resources>
     <dimen name="tab_text_size">30sp</dimen>
+    <dimen name="big_sp">50sp</dimen>
 </resources>

@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onPageSelected(int i) {
 //                Log.i("TAG","position" + i);
-                if(i == 0){
+                if (i == 0) {
                     fab_setting.hide();
-                }else {
+                } else {
                     fab_setting.show();
                 }
             }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/mViewPager">
+
+        <ImageView
+            android:id="@+id/point1"
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+
+        <ImageView
+            android:id="@+id/point2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:id="@+id/point3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
