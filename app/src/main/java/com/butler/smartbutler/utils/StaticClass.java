@@ -7,4 +7,6 @@ public class StaticClass {
     public static final String SHARE_IS_FIRST = "isFirst";
     //bugly app id
     public static final String BUGLY_APP_ID = "bd7f2fd4a8";
+    //Bmob app id
+    public static final String BMOB_APP_ID = "b0cbe301cdff37c2337fb38055de62fa";
 }
