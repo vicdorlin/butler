@@ -7,6 +7,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
+        android:inputType="textPassword"
         android:id="@+id/text_pwd"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
@@ -83,7 +84,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:textColor="@color/colorAccent"
-        android:text="记住密码"
+        android:text="忘记密码"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 

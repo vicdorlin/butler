@@ -87,6 +87,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             finish();
                         } else {
                             Toast.makeText(RegisterActivity.this, "注册失败：" + e.toString(), Toast.LENGTH_SHORT).show();
+                            return;
                         }
                     }
                 });
