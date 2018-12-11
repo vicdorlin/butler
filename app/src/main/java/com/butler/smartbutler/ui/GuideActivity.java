@@ -37,7 +37,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
-        iv_back = findViewById(R.id.iv_back);
+        iv_back = findViewById(R.id.iv_back);//返回按钮
         iv_back.setOnClickListener(this);
 
         viewPager = findViewById(R.id.mViewPager);
