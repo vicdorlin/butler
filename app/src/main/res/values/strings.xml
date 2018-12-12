@@ -23,5 +23,6 @@
     <string name="text_now_password">旧密码</string>
     <string name="text_new_password">新密码</string>
     <string name="text_forget_password">忘记密码</string>
+    <string name="text_now_login">正在登陆...</string>
 </resources>
 

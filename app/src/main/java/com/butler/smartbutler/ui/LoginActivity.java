@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,6 +17,7 @@ import com.butler.smartbutler.MainActivity;
 import com.butler.smartbutler.R;
 import com.butler.smartbutler.entity.User;
 import com.butler.smartbutler.utils.ShareUtils;
+import com.butler.smartbutler.view.CustomDialog;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -28,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText textPassword;
     private CheckBox keepPassword;
     private TextView forgetPwdView;
+
+    private CustomDialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +58,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             textPassword.setText(ShareUtils.getString(this, "password", ""));
         }
 
+        dialog = new CustomDialog(this, 100, 199, R.layout.dialog_loading, R.style.theme_dialog, Gravity.CENTER, R.style.pop_anim_style);
+        //屏幕外点击无效
+        dialog.setCancelable(false);
     }
 
     @Override
@@ -74,11 +81,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT);
                     return;
                 }
+                dialog.show();
                 user.setUsername(username);
                 user.setPassword(pwd);
                 user.login(new SaveListener<User>() {
                     @Override
                     public void done(User user, BmobException e) {
+                        dialog.dismiss();
                         if (e == null) {
                             if (!user.getEmailVerified()) {
                                 Toast.makeText(LoginActivity.this, "请先验证邮箱后再登录", Toast.LENGTH_SHORT).show();
