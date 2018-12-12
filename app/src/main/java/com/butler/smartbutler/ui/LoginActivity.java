@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.butler.smartbutler.MainActivity;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText textUsername;
     private EditText textPassword;
     private CheckBox keepPassword;
+    private TextView forgetPwdView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textUsername = findViewById(R.id.text_username);
         textPassword = findViewById(R.id.text_pwd);
         keepPassword = findViewById(R.id.box_remember_pwd);
+        forgetPwdView = findViewById(R.id.text_forget_pwd);
+        forgetPwdView.setOnClickListener(this);
         boolean isChecked = ShareUtils.getBoolean(this, "keepPassowrd", false);
         if (isChecked) {
             keepPassword.setChecked(isChecked);
@@ -92,6 +96,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                     }
                 });
+                break;
+            case R.id.text_forget_pwd:
+                startActivity(new Intent(this, ForgetPasswordActivity.class));
                 break;
         }
     }

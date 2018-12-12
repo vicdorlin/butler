@@ -71,21 +71,20 @@
         android:id="@+id/box_remember_pwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:text="记住密码?"
         android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/text_pwd"
+        app:layout_constraintStart_toStartOf="@+id/text_pwd"
         app:layout_constraintTop_toBottomOf="@+id/text_pwd" />
 
     <TextView
-        android:id="@+id/text_remember_pwd"
+        android:id="@+id/text_forget_pwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="@color/colorAccent"
         android:text="忘记密码"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/box_remember_pwd"
+        app:layout_constraintEnd_toEndOf="@+id/text_pwd"
+        app:layout_constraintTop_toTopOf="@+id/box_remember_pwd" />
 
 </android.support.constraint.ConstraintLayout>

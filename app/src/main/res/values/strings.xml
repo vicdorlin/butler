@@ -19,5 +19,9 @@
     <string name="text_email">邮箱</string>
     <string name="text_register_remind">注册成功需要前往邮箱验证，否则无法登录！</string>
     <string name="text_registered">注册</string>
+    <string name="text_edit_password">修改密码</string>
+    <string name="text_now_password">旧密码</string>
+    <string name="text_new_password">新密码</string>
+    <string name="text_forget_password">忘记密码</string>
 </resources>
 
