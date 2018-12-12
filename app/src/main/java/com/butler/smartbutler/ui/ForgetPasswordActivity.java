@@ -76,7 +76,7 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
                             BmobUser.logOut();//退出登录
                             ShareUtils.delShare(ForgetPasswordActivity.this, "password");
                             startActivity(new Intent(ForgetPasswordActivity.this, LoginActivity.class));
-                            ToastUtil.showShortToast("密码更新成功，请重新登录");
+                            ToastUtil.showShortToastCenter("密码更新成功，请重新登录");
                             finish();
                             return;
                         } else {
@@ -98,10 +98,10 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
                         if (e == null) {
                             ShareUtils.delShare(ForgetPasswordActivity.this, "password");
                             startActivity(new Intent(ForgetPasswordActivity.this, LoginActivity.class));
-                            ToastUtil.showShortToast("邮件发送成功，请前往邮箱验证");
+                            ToastUtil.showShortToastCenter("邮件发送成功，请前往邮箱验证");
                             finish();
                         } else {
-                            ToastUtil.showShortToast("邮件发送失败 code:" + e.getErrorCode());
+                            ToastUtil.showShortToast("邮件发送失败:" + e.getMessage());
                         }
                     }
                 });
