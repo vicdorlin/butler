@@ -46,6 +46,7 @@ public class ForgetPasswordActivity extends BaseActivity implements View.OnClick
         //用户未登录 隐藏修改密码框
         if (!BmobUser.isLogin()) {
             tvModPwd.setVisibility(View.GONE);
+            btnUpdatePwd.setVisibility(View.GONE);
             etNow.setVisibility(View.GONE);
             etNew.setVisibility(View.GONE);
             etConfirm.setVisibility(View.GONE);
