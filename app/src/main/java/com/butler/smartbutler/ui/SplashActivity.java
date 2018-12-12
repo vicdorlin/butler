@@ -7,10 +7,13 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.butler.smartbutler.MainActivity;
 import com.butler.smartbutler.R;
 import com.butler.smartbutler.utils.ShareUtils;
 import com.butler.smartbutler.utils.StaticClass;
 import com.butler.smartbutler.utils.UtilTools;
+
+import cn.bmob.v3.BmobUser;
 
 /**
  * 闪屏页
@@ -33,6 +36,8 @@ public class SplashActivity extends AppCompatActivity {
                 case StaticClass.HANDLER_SPLASH:
                     if (isFirst()) {
                         startActivity(new Intent(SplashActivity.this, GuideActivity.class));
+                    } else if (BmobUser.isLogin()) {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     } else {
                         startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                     }

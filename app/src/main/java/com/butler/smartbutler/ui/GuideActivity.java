@@ -17,6 +17,8 @@ import com.butler.smartbutler.utils.L;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobUser;
+
 public class GuideActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewPager viewPager;
@@ -136,7 +138,11 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.btn_start:
             case R.id.iv_back:
-                startActivity(new Intent(this, MainActivity.class));
+                if (BmobUser.isLogin()) {
+                    startActivity(new Intent(this, MainActivity.class));
+                } else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
                 finish();
                 break;
         }
