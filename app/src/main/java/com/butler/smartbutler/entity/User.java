@@ -11,4 +11,14 @@ public class User extends BmobUser {
     private Integer age;
     private Integer sex;
     private String desc;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "age=" + age +
+                ", sex=" + sex +
+                ", username=" + super.getUsername() +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }
