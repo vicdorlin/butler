@@ -45,4 +45,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.4'
 
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.kymjs.rxvolley:rxvolley:1.1.4'
+//    implementation 'com.kymjs.rxvolley:okhttp3:1.1.4'
+//    implementation 'com.kymjs.rxvolley:bitmapcore:1.1.4'
+    implementation 'com.alibaba:fastjson:1.2.54'
 }

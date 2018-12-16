@@ -23,6 +23,8 @@ import com.butler.smartbutler.R;
 import com.butler.smartbutler.entity.User;
 import com.butler.smartbutler.ui.ForgetPasswordActivity;
 import com.butler.smartbutler.ui.LoginActivity;
+import com.butler.smartbutler.ui.LogisticActivity;
+import com.butler.smartbutler.utils.L;
 import com.butler.smartbutler.utils.ShareUtils;
 import com.butler.smartbutler.utils.ToastUtil;
 import com.butler.smartbutler.utils.UtilTools;
@@ -77,6 +79,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         editUser.setOnClickListener(this);
         circleImageView = view.findViewById(R.id.profile_image);
         circleImageView.setOnClickListener(this);
+        UtilTools.getImageToShare(getContext(), circleImageView);
 
         etUsername = view.findViewById(R.id.et_username);
         etSex = view.findViewById(R.id.et_sex);
@@ -104,6 +107,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         btnCamera.setOnClickListener(this);
         btnPicture.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
+
+        tvLogistics = view.findViewById(R.id.tv_logistics);
+        tvLogistics.setOnClickListener(this);
     }
 
     @Override
@@ -171,6 +177,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_picture:
                 toPicture();
                 break;
+            case R.id.tv_logistics:
+                startActivity(new Intent(getActivity(), LogisticActivity.class));
+                break;
         }
     }
 
@@ -214,22 +223,23 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public static final String PHOTO_IMAGE_NAME = "fileImg.jpg";
-    public static final int CAMERA_REQUEST_CODE = 1001;
-    public static final int IMAGE_REQUEST_CODE = 1002;
-    public static final int RESULT_REQUEST_CODE = 1003;
+    public static final String PHOTO_IMAGE_FILE_NAME = "fileImg.jpg";
+    public static final int CAMERA_REQUEST_CODE = 100;
+    public static final int IMAGE_REQUEST_CODE = 101;
+    public static final int RESULT_REQUEST_CODE = 102;
     private File tempFile = null;
 
-    //跳转到相册
+    //跳转相机
     private void toCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //判断内存卡是否可用
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory(), PHOTO_IMAGE_NAME)));
+        //判断内存卡是否可用，可用的话就进行储存
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                Uri.fromFile(new File(Environment.getExternalStorageDirectory(), PHOTO_IMAGE_FILE_NAME)));
         startActivityForResult(intent, CAMERA_REQUEST_CODE);
         dialog.dismiss();
     }
 
-    //跳转到相机
+    //跳转相册
     private void toPicture() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -237,65 +247,68 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         dialog.dismiss();
     }
 
-    //用来获取拍照或相册的返回值
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == getActivity().RESULT_CANCELED) {
-            return;
-        }
-        switch (requestCode) {
-            //相机数据
-            case CAMERA_REQUEST_CODE:
-                tempFile = new File(Environment.getExternalStorageDirectory(), PHOTO_IMAGE_NAME);
-                startPhotoZoom(Uri.fromFile(tempFile));
-                break;
-            //相册数据
-            case IMAGE_REQUEST_CODE:
-                startPhotoZoom(data.getData());
-                break;
-            case RESULT_REQUEST_CODE:
-                //有可能点击舍弃
-                if (data != null) {
-                    //拿到图片设置
-                    setImage2View(data);
-                    //既然已经设置了图片，我们原先的应该删除
-                    if (tempFile != null) {
-                        tempFile.delete();
+        if (resultCode != getActivity().RESULT_CANCELED) {
+            switch (requestCode) {
+                //相册数据
+                case IMAGE_REQUEST_CODE:
+                    startPhotoZoom(data.getData());
+                    break;
+                //相机数据
+                case CAMERA_REQUEST_CODE:
+                    tempFile = new File(Environment.getExternalStorageDirectory(), PHOTO_IMAGE_FILE_NAME);
+                    startPhotoZoom(Uri.fromFile(tempFile));
+                    break;
+                case RESULT_REQUEST_CODE:
+                    //有可能点击舍弃
+                    if (data != null) {
+                        //拿到图片设置
+                        setImageToView(data);
+                        //既然已经设置了图片，我们原先的就应该删除
+                        if (tempFile != null) {
+                            tempFile.delete();
+                        }
                     }
-                }
-                break;
+                    break;
+            }
         }
     }
 
-    //裁剪图片
+    //裁剪
     private void startPhotoZoom(Uri uri) {
-        if (uri == null) return;
+        if (uri == null) {
+            L.e("uri == null");
+            return;
+        }
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         //设置裁剪
         intent.putExtra("crop", "true");
-        //裁剪宽高
+        //裁剪宽高比例
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
-        //设置裁剪图片的质量
+        //裁剪图片的质量
         intent.putExtra("outputX", 320);
         intent.putExtra("outputY", 320);
         //发送数据
-        intent.putExtra("return-data", "true");
+        intent.putExtra("return-data", true);
         startActivityForResult(intent, RESULT_REQUEST_CODE);
     }
 
-    private void setImage2View(Intent data) {
+    //设置图片
+    private void setImageToView(Intent data) {
         Bundle bundle = data.getExtras();
-        if (bundle == null) return;
-        Bitmap bitmap = bundle.getParcelable("data");
-        circleImageView.setImageBitmap(bitmap);
+        if (bundle != null) {
+            Bitmap bitmap = bundle.getParcelable("data");
+            circleImageView.setImageBitmap(bitmap);
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         //保存
-        UtilTools.putImageToShare(getActivity(),circleImageView);
+        UtilTools.putImageToShare(getActivity(), circleImageView);
     }
 }
