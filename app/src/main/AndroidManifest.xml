@@ -58,6 +58,9 @@
         <activity
             android:name=".ui.LogisticActivity"
             android:label="@string/str_logistic" />
+        <activity
+            android:name=".fragment.PhoneLocationActivity"
+            android:label="归属地查询" />
     </application>
 
 </manifest>

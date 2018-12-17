@@ -57,6 +57,7 @@
         android:layout_height="wrap_content" />
 
     <ListView
+        android:scrollbars="none"
         android:id="@+id/lv_logistic"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"

@@ -25,5 +25,7 @@
     <string name="text_forget_password">忘记密码</string>
     <string name="text_now_login">正在登陆...</string>
     <string name="str_logistic">物流查询</string>
+    <string name="text_input_phone">请输入手机号</string>
+    <string name="text_query">查询</string>
 </resources>
 

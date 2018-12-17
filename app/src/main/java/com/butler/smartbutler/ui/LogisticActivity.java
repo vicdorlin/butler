@@ -87,7 +87,7 @@ public class LogisticActivity extends BaseActivity implements View.OnClickListen
                     ToastUtil.showShortToastCenter("请输入订单号");
                 }
                 LogisticCompany selectedItem = (LogisticCompany) spinner.getSelectedItem();
-                String url = StaticClass.POLYMERIZE_URL.replace("{com}", selectedItem.getNo()).replace("{no}", orderId);
+                String url = StaticClass.EXPRESS_QUERY_URL.replace("{com}", selectedItem.getNo()).replace("{no}", orderId);
                 RxVolley.get(url, new HttpCallback() {
                     @Override
                     public void onSuccess(String t) {

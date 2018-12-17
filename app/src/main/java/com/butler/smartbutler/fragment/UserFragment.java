@@ -110,6 +110,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
         tvLogistics = view.findViewById(R.id.tv_logistics);
         tvLogistics.setOnClickListener(this);
+        tvPhoneLocation = view.findViewById(R.id.tv_phoneLocation);
+        tvPhoneLocation.setOnClickListener(this);
     }
 
     @Override
@@ -179,6 +181,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.tv_logistics:
                 startActivity(new Intent(getActivity(), LogisticActivity.class));
+                break;
+            case R.id.tv_phoneLocation:
+                startActivity(new Intent(getActivity(), PhoneLocationActivity.class));
                 break;
         }
     }
