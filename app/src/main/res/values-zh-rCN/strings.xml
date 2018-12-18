@@ -27,4 +27,7 @@
     <string name="str_logistic">物流查询</string>
     <string name="text_input_phone">请输入手机号</string>
     <string name="text_query">查询</string>
+    <string name="text_more_length">字太多听不懂</string>
+    <string name="text_tost_empty">没啥说的</string>
+    <string name="text_hello_tts">语音</string>
 </resources>

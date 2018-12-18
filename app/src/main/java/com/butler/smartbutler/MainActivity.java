@@ -8,19 +8,19 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.butler.smartbutler.fragment.ButlerFragment;
 import com.butler.smartbutler.fragment.GirlFragment;
 import com.butler.smartbutler.fragment.UserFragment;
 import com.butler.smartbutler.fragment.WechatFragment;
+import com.butler.smartbutler.ui.BaseActivity;
 import com.butler.smartbutler.ui.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private List<String> mTitle;

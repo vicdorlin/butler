@@ -4,12 +4,16 @@ import android.app.Application;
 import android.content.Context;
 
 import com.butler.smartbutler.utils.StaticClass;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import cn.bmob.v3.Bmob;
 
 public class BaseApplication extends Application {
-    /**系统上下文*/
+    /**
+     * 系统上下文
+     */
     private static Context mAppContext;
 
     @Override
@@ -18,6 +22,12 @@ public class BaseApplication extends Application {
         mAppContext = getApplicationContext();
         initBugly();
         initBmob();
+        initIflyTec();
+    }
+
+    private void initIflyTec() {
+        // 请勿在“=”与appid之间添加任何空字符或者转义符
+        SpeechUtility.createUtility(mAppContext, SpeechConstant.APPID + "=" + StaticClass.VOICE_KEY);
     }
 
     private void initBmob() {
@@ -47,8 +57,10 @@ public class BaseApplication extends Application {
         CrashReport.initCrashReport(getApplicationContext(), StaticClass.BUGLY_APP_ID, true);
     }
 
-    /**获取系统上下文：用于ToastUtil类*/
-    public static Context getAppContext(){
+    /**
+     * 获取系统上下文：用于ToastUtil类
+     */
+    public static Context getAppContext() {
         return mAppContext;
     }
 }
