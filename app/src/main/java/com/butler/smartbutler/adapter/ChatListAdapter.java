@@ -21,7 +21,6 @@ public class ChatListAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater inflater;
-    private ChatListData data;
     private List<ChatListData> mList;
 
     public ChatListAdapter(Context mContext, List<ChatListData> mList) {

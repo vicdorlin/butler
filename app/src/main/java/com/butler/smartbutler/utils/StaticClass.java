@@ -19,10 +19,14 @@ public class StaticClass {
     public static final String PHONE_LOCATION_QUERY_KEY = "4ac6ae91ace21f7b4e2008da2e295c51";
     //归属地查询URL
     public static String PHONE_LOCATION_QUERY_URL = "http://apis.juhe.cn/mobile/get?phone={phone}&key=" + PHONE_LOCATION_QUERY_KEY;
-    //阿凡达问答机器人KEY
-    public static String ANSWER_ROBOT_KEY = "1237bbc304ea44f0b18a75ec49369927";
-    //阿凡达问答机器人URL
+    //HaoService问答机器人KEY
+    public static final String ANSWER_ROBOT_KEY = "1237bbc304ea44f0b18a75ec49369927";
+    //HaoService问答机器人URL
     public static String ANSWER_ROBOT_URL = "http://apis.haoservice.com/efficient/robot?info={info}&key=" + ANSWER_ROBOT_KEY;
+    //微信精选appkey
+    public static final String WECHAT_SELECTION_KEY = "c6bbce3ab04ab6d3327f5e3d25faa5c0";
+    //微信精选URL
+    public static String WECHAT_SELECTION_URL = "http://v.juhe.cn/weixin/query?key=" + WECHAT_SELECTION_KEY;
 
 
     //语音key
