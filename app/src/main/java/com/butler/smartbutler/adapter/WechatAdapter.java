@@ -1,6 +1,7 @@
 package com.butler.smartbutler.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import com.butler.smartbutler.R;
 import com.butler.smartbutler.entity.WechatSelectionData;
+import com.butler.smartbutler.utils.PicassoUtil;
+import com.butler.smartbutler.utils.ScreenUtil;
 
 import java.util.List;
 
@@ -50,14 +53,17 @@ public class WechatAdapter extends BaseAdapter {
             viewHolder.tvTitle = convertView.findViewById(R.id.tv_title);
             viewHolder.tvSource = convertView.findViewById(R.id.tv_source);
             convertView.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         //拿到当前的这个实体类
         WechatSelectionData data = dataList.get(position);
         viewHolder.tvTitle.setText(data.getTitle());
         viewHolder.tvSource.setText(data.getSource());
-
+        String imgUrl = data.getFirstimg();
+        if (TextUtils.isEmpty(imgUrl))
+            imgUrl = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3572520673,1947183971&fm=173&app=49&f=JPEG?w=640&h=427&s=56B6876426D051DE8280D4D0030010F2";
+        PicassoUtil.loadImageViewSize(imgUrl, viewHolder.ivImg, ScreenUtil.getScreenWidthPixels(context) / 3, ScreenUtil.getScreenWidthPixels(context) / 4);
         return convertView;
     }
 
