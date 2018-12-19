@@ -27,9 +27,9 @@ public class StaticClass {
     public static final String WECHAT_SELECTION_KEY = "c6bbce3ab04ab6d3327f5e3d25faa5c0";
     //微信精选URL
     public static String WECHAT_SELECTION_URL = "http://v.juhe.cn/weixin/query?key=" + WECHAT_SELECTION_KEY;
-
-
     //语音key
     public static final String VOICE_KEY = "5c1780b0";
+    //妹纸接口
+    public static String GIRL_URL = "http://image.baidu.com/data/imgs?col=%E7%BE%8E%E5%A5%B3&tag=%E7%BE%8E%E5%A5%B3&sort=0&pn={start}&rn={size}&p=channel&from=1";
 
 }
