@@ -29,6 +29,8 @@
     <string name="text_query">查询</string>
     <string name="text_more_length">字太多听不懂</string>
     <string name="text_tost_empty">没啥说的</string>
-    <string name="text_hello_tts">语音</string>
+    <string name="text_hello_tts">你好啊小伙子</string>
+    <string name="tts_effect">语音播报</string>
+    <string name="intro_switch">开启之后与服务管家对讲语音播报</string>
 </resources>
 

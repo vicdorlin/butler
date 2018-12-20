@@ -79,7 +79,7 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
         adapter = new ChatListAdapter(getActivity(), mList);
         mChatListView.setAdapter(adapter);
 
-//        addLeftItem(getString(R.string.text_hello_tts));
+        addLeftItem(getString(R.string.text_hello_tts));
     }
 
     //点击事件
@@ -162,7 +162,7 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
     //添加左边文本
     private void addLeftItem(String text) {
 
-        boolean isSpeak = ShareUtils.getBoolean(getActivity(), "isSpeak", true);
+        boolean isSpeak = ShareUtils.getBoolean(getActivity(), "isSpeak", false);
         if (isSpeak) {
             startSpeak(text);
         }
