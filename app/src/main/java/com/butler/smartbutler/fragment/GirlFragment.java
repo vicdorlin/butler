@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.alibaba.fastjson.JSON;
@@ -22,6 +21,7 @@ import com.butler.smartbutler.entity.GridData;
 import com.butler.smartbutler.utils.PicassoUtil;
 import com.butler.smartbutler.utils.StaticClass;
 import com.butler.smartbutler.view.CustomDialog;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
@@ -37,7 +37,7 @@ public class GirlFragment extends Fragment {
     //提示框
     private CustomDialog dialog;
     //预览图片
-    private ImageView iv_img;
+    private PhotoView photoView;
     //PhotoView
     private PhotoViewAttacher photoViewAttacher;
     private boolean isLoad;
@@ -57,7 +57,7 @@ public class GirlFragment extends Fragment {
         dialog = new CustomDialog(getActivity(), LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT, R.layout.dialog_girl,
                 R.style.theme_dialog, Gravity.CENTER, R.style.pop_anim_style);
-        iv_img = dialog.findViewById(R.id.iv_img);
+        photoView = dialog.findViewById(R.id.photo_view);
 
         String url = StaticClass.GIRL_URL.replace("{start}", startNum + "").replace("{size}", size + "");
         RxVolley.get(url, new HttpCallback() {
@@ -70,9 +70,9 @@ public class GirlFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //解析图片
-                PicassoUtil.loadImageView(list.get(position).getImgUrl(), iv_img);
+                PicassoUtil.loadImageView(list.get(position).getImgUrl(), photoView);
                 //缩放
-                photoViewAttacher = new PhotoViewAttacher(iv_img);
+                photoViewAttacher = new PhotoViewAttacher(photoView);
                 //刷新
                 photoViewAttacher.update();
                 dialog.show();
