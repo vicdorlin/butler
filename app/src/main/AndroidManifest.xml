@@ -32,6 +32,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!--如需使用人脸识别，还要添加：摄相头权限，拍照需要用到 -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <!--短信权限-->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".application.BaseApplication"
@@ -78,6 +83,9 @@
             android:label="归属地查询" />
         <!--新闻详情-->
         <activity android:name=".fragment.WebViewActivity" />
+
+        <!--短信服务-->
+        <service android:name=".service.SmsService" />
     </application>
 
 </manifest>

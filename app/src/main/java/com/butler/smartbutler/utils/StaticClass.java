@@ -31,5 +31,7 @@ public class StaticClass {
     public static final String VOICE_KEY = "5c1780b0";
     //妹纸接口
     public static String GIRL_URL = "http://image.baidu.com/data/imgs?col=%E7%BE%8E%E5%A5%B3&tag=%E7%BE%8E%E5%A5%B3&sort=0&pn={start}&rn={size}&p=channel&from=1";
+    //短信Action
+    public static final String SMS_ACTION = "android.provider.Telephony.SMS_RECEIVED";
 
 }
