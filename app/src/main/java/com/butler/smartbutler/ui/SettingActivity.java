@@ -1,18 +1,11 @@
 package com.butler.smartbutler.ui;
 
-import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import com.butler.smartbutler.R;
 import com.butler.smartbutler.service.SmsService;
@@ -26,7 +19,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private Switch sw_sms;
     private int SYSTEM_ALERT_WINDOW_PERMISSION_CODE = 1;
 
-    private TextView tv_version;
+//    private TextView tv_version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +37,15 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         sw_sms.setOnClickListener(this);
         boolean isSms = ShareUtils.getBoolean(this, "isSms", false);
         sw_sms.setChecked(isSms);
-        tv_version = findViewById(R.id.tv_version);
-        tv_version.setOnClickListener(this);
+//        tv_version = findViewById(R.id.tv_version);
+//        tv_version.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_version:
+            /*case R.id.tv_version:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if(ContextCompat.checkSelfPermission(SettingActivity.this,Manifest.permission.SYSTEM_ALERT_WINDOW) == PackageManager.PERMISSION_GRANTED){
                         ToastUtil.showShortToastCenter("you have already granted this permission!");
@@ -75,7 +68,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                         }
                     }
                 }
-                break;
+                break;*/
             case R.id.sw_speak:
                 //切换相反
                 aSwitch.setSelected(!aSwitch.isSelected());
