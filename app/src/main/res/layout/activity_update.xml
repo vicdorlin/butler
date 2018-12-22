@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
+
+    <!--进度条-->
+    <com.dinuscxj.progressbar.CircleProgressBar
+        android:id="@+id/line_progress"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="141dp"
+        android:layout_marginBottom="12dp"
+        app:drawBackgroundOutsideProgress="true"
+        app:layout_constraintBottom_toTopOf="@+id/tv_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:progress_background_color="#ffa"
+        app:progress_end_color="@color/colorPrimary"
+        app:progress_shader="radial"
+        app:progress_start_color="@color/colorAccent"
+        app:progress_text_size="15sp"
+        app:style="solid" />
+
+    <!--文件大小-->
+    <TextView
+        android:id="@+id/tv_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:text="---- / ----"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/line_progress"
+        app:layout_constraintStart_toStartOf="@+id/line_progress"
+        app:layout_constraintTop_toBottomOf="@+id/line_progress" />
+
+    <!--温馨提示-->
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="232dp"
+        android:text="下载过程中请勿离开"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_size"
+        app:layout_constraintStart_toStartOf="@+id/tv_size"
+        app:layout_constraintTop_toBottomOf="@+id/tv_size" />
+
+
+</android.support.constraint.ConstraintLayout>

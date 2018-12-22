@@ -33,5 +33,7 @@ public class StaticClass {
     public static String GIRL_URL = "http://image.baidu.com/data/imgs?col=%E7%BE%8E%E5%A5%B3&tag=%E7%BE%8E%E5%A5%B3&sort=0&pn={start}&rn={size}&p=channel&from=1";
     //短信Action
     public static final String SMS_ACTION = "android.provider.Telephony.SMS_RECEIVED";
+    //版本更新
+    public static final String CHECK_UPDATE_URL = "http://192.168.3.9:8080/smartBoy/config.json";
 
 }

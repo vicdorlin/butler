@@ -86,6 +86,9 @@
 
         <!--短信服务-->
         <service android:name=".service.SmsService" />
+        <!--下载更新-->
+        <activity android:name=".ui.UpdateActivity"
+            android:label="下载更新"/>
     </application>
 
 </manifest>
