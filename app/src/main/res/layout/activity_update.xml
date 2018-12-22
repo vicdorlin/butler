@@ -9,8 +9,8 @@
     <!--进度条-->
     <com.dinuscxj.progressbar.CircleProgressBar
         android:id="@+id/line_progress"
-        android:layout_width="50dp"
-        android:layout_height="0dp"
+        android:layout_width="205dp"
+        android:layout_height="153dp"
         android:layout_marginTop="141dp"
         android:layout_marginBottom="12dp"
         app:drawBackgroundOutsideProgress="true"
@@ -21,9 +21,9 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:progress_background_color="#ffa"
         app:progress_end_color="@color/colorPrimary"
-        app:progress_shader="radial"
+        app:progress_shader="linear"
         app:progress_start_color="@color/colorAccent"
-        app:progress_text_size="15sp"
+        app:progress_text_size="36sp"
         app:style="solid" />
 
     <!--文件大小-->
