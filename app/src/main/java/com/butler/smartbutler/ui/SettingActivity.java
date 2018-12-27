@@ -22,6 +22,7 @@ import com.butler.smartbutler.utils.StaticClass;
 import com.butler.smartbutler.utils.ToastUtil;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 public class SettingActivity extends BaseActivity implements View.OnClickListener {
     //语音播报
@@ -35,6 +36,13 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private String versionName;
     private int versionCode;
     private String url;
+    private LinearLayout llLocation;
+
+    //扫一扫
+    private LinearLayout llScan;
+    private TextView tvScan;
+    //生成二维码
+    private LinearLayout llQrCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,36 +69,30 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         } catch (PackageManager.NameNotFoundException e) {
             tv_version.setText("检测版本");
         }
+        llScan = findViewById(R.id.ll_scan);
+        llScan.setOnClickListener(this);
+        tvScan = findViewById(R.id.tv_scan_result);
+        llQrCode = findViewById(R.id.ll_qr_code);
+        llQrCode.setOnClickListener(this);
+        llLocation = findViewById(R.id.ll_my_location);
+        llLocation.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            /*case R.id.tv_version:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if(ContextCompat.checkSelfPermission(SettingActivity.this,Manifest.permission.SYSTEM_ALERT_WINDOW) == PackageManager.PERMISSION_GRANTED){
-                        ToastUtil.showShortToastCenter("you have already granted this permission!");
-                    }else {
-                        if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.SYSTEM_ALERT_WINDOW)){
-                            new AlertDialog.Builder(this).setTitle("Permission needed").setMessage("this permission is needed because of this and that")
-                                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            ActivityCompat.requestPermissions(SettingActivity.this,new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW},1);
-                                        }
-                                    }).setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            }).create().show();
-                        }else {
-                            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW},SYSTEM_ALERT_WINDOW_PERMISSION_CODE);
-                        }
-                    }
-                }
-                break;*/
+            case R.id.ll_my_location:
+                startActivity(new Intent(this, LocationActivity.class));
+                break;
+            case R.id.ll_qr_code:
+                startActivity(new Intent(this, QrCodeActivity.class));
+                break;
+            case R.id.ll_scan:
+                //打开扫描界面扫描条形码或二维码
+                Intent openCameraIntent = new Intent(this, CaptureActivity.class);
+                startActivityForResult(openCameraIntent, 0);
+                break;
             case R.id.ll_update:
                 /**
                  * 步骤
@@ -142,7 +144,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(SettingActivity.this, UpdateActivity.class);
-                        intent.putExtra("url",url);
+                        intent.putExtra("url", url);
                         startActivity(intent);
                     }
                 }).setNegativeButton("算了吧", new DialogInterface.OnClickListener() {
@@ -171,5 +173,15 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
         versionCode = packageInfo.versionCode;
         versionName = packageInfo.versionName;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            String scanResult = bundle.getString("result");
+            tvScan.setText(scanResult);
+        }
     }
 }

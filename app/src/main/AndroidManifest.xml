@@ -37,6 +37,11 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--使用步行AR导航，配置Camera权限-->
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".application.BaseApplication"
@@ -87,8 +92,20 @@
         <!--短信服务-->
         <service android:name=".service.SmsService" />
         <!--下载更新-->
-        <activity android:name=".ui.UpdateActivity"
-            android:label="下载更新"/>
+        <activity
+            android:name=".ui.UpdateActivity"
+            android:label="下载更新" />
+        <activity
+            android:name=".ui.QrCodeActivity"
+            android:label="我的二维码" />
+
+        <activity
+            android:name=".ui.LocationActivity"
+            android:label="我的位置" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="R2CRNhjtYmVRTfqOhilRI4wVHBlbgCgM" />
     </application>
 
 </manifest>
