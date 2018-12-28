@@ -36,7 +36,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private String versionName;
     private int versionCode;
     private String url;
+    //我的定位
     private LinearLayout llLocation;
+    //关于软件
+    private LinearLayout llAbout;
 
     //扫一扫
     private LinearLayout llScan;
@@ -76,12 +79,17 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         llQrCode.setOnClickListener(this);
         llLocation = findViewById(R.id.ll_my_location);
         llLocation.setOnClickListener(this);
+        llAbout = findViewById(R.id.ll_about);
+        llAbout.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.ll_about:
+                startActivity(new Intent(this, AboutActivity.class));
+                break;
             case R.id.ll_my_location:
                 startActivity(new Intent(this, LocationActivity.class));
                 break;

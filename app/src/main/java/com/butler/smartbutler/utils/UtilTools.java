@@ -1,6 +1,8 @@
 package com.butler.smartbutler.utils;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -8,6 +10,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.butler.smartbutler.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -51,7 +55,7 @@ public class UtilTools {
     }
 
     //获取版本号
-    /*public static String getVersion(Context mContext){
+    public static String getVersion(Context mContext){
         PackageManager pm = mContext.getPackageManager();
         try {
             PackageInfo info = pm.getPackageInfo(mContext.getPackageName(),0);
@@ -59,5 +63,5 @@ public class UtilTools {
         } catch (PackageManager.NameNotFoundException e) {
             return mContext.getString(R.string.text_unknown);
         }
-    }*/
+    }
 }

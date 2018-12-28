@@ -45,4 +45,8 @@
     <string name="text_setting_content_5">把自己分享给朋友吧</string>
     <string name="text_setting_content_6">时刻掌握自身位置</string>
     <string name="text_setting_content_7">www.imooc.com</string>
+    <string name="text_app_name">应用名</string>
+    <string name="text_version">版本号</string>
+    <string name="text_unknown">未知版本</string>
+    <string name="text_website_address">https://www.baidu.com</string>
 </resources>
